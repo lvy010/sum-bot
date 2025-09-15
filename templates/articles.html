@@ -1,0 +1,169 @@
+{% extends "base.html" %}
+
+{% block title %}所有文章 - lvy- 技术博客作品集{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-lg-9">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1 class="h2">
+                    <i class="fas fa-list me-2"></i>所有文章
+                    <span class="badge bg-primary ms-2">{{ articles|length }}</span>
+                </h1>
+                <div class="dropdown">
+                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                        <i class="fas fa-sort me-1"></i>排序方式
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="?sort=date">按发布时间</a></li>
+                        <li><a class="dropdown-item" href="?sort=reads">按阅读量</a></li>
+                        <li><a class="dropdown-item" href="?sort=likes">按点赞数</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 文章列表 -->
+            {% for article in articles %}
+            <div class="card article-card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h5 class="card-title mb-2">
+                                <a href="{{ article.url }}" target="_blank" class="article-title">
+                                    {{ article.title }}
+                                </a>
+                            </h5>
+                            <div class="article-meta mb-2">
+                                <i class="fas fa-calendar-alt me-1"></i>
+                                {{ article.publish_time }}
+                            </div>
+                            {% if article.content %}
+                            <p class="card-text text-muted mb-3">
+                                {{ article.content[:200] }}...
+                            </p>
+                            {% endif %}
+                            <div class="article-stats">
+                                <span class="me-3">
+                                    <i class="fas fa-eye me-1"></i>{{ article.read_count }} 阅读
+                                </span>
+                                <span class="me-3">
+                                    <i class="fas fa-heart me-1"></i>{{ article.like_count }} 点赞
+                                </span>
+                                <span>
+                                    <i class="fas fa-comment me-1"></i>{{ article.comment_count }} 评论
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-md-end">
+                            {% if article.read_count > 1000 %}
+                            <span class="badge bg-danger mb-2">热门</span>
+                            {% elif article.like_count > 50 %}
+                            <span class="badge bg-warning mb-2">推荐</span>
+                            {% endif %}
+                            <div class="mt-3">
+                                <a href="{{ article.url }}" target="_blank" class="btn btn-outline-primary btn-sm">
+                                    <i class="fas fa-external-link-alt me-1"></i>阅读全文
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+            <!-- 分页 -->
+            {% if total_pages > 1 %}
+            <nav aria-label="文章分页">
+                <ul class="pagination justify-content-center">
+                    {% for page_num in range(1, total_pages + 1) %}
+                    <li class="page-item {% if page_num == current_page %}active{% endif %}">
+                        <a class="page-link" href="?page={{ page_num }}">{{ page_num }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </nav>
+            {% endif %}
+        </div>
+
+        <!-- 侧边栏 -->
+        <div class="col-lg-3">
+            <!-- 搜索框 -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0"><i class="fas fa-search me-2"></i>搜索文章</h5>
+                </div>
+                <div class="card-body">
+                    <form method="GET">
+                        <div class="input-group">
+                            <input type="text" name="search" class="form-control" 
+                                   placeholder="搜索标题或内容..." value="{{ search_query or '' }}">
+                            <button class="btn btn-primary" type="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- 文章统计 -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0"><i class="fas fa-chart-pie me-2"></i>文章统计</h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>总文章数</span>
+                        <strong>{{ total_articles }}</strong>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>总阅读量</span>
+                        <strong>{{ total_reads }}</strong>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>总点赞数</span>
+                        <strong>{{ total_likes }}</strong>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span>平均阅读量</span>
+                        <strong>{{ avg_reads }}</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 月份筛选 -->
+            {% if monthly_counts %}
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0"><i class="fas fa-calendar me-2"></i>按月份筛选</h5>
+                </div>
+                <div class="card-body">
+                    {% for month, count in monthly_counts.items() %}
+                    <div class="d-flex justify-content-between mb-2">
+                        <a href="?month={{ month }}" class="text-decoration-none">
+                            {{ month }}
+                        </a>
+                        <span class="badge bg-secondary">{{ count }}</span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- 热门标签 -->
+            {% if popular_keywords %}
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0"><i class="fas fa-tags me-2"></i>热门标签</h5>
+                </div>
+                <div class="card-body">
+                    {% for keyword in popular_keywords %}
+                    <span class="tech-tag">{{ keyword }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

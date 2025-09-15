@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lvy- 技术博客作品集 - 首页</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #64748b;
+            --accent-color: #f59e0b;
+            --success-color: #10b981;
+            --background-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --border-color: #e2e8f0;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-color), #1d4ed8);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color), #1d4ed8);
+            color: white;
+            padding: 4rem 0;
+            margin-bottom: 3rem;
+        }
+        
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .stats-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+        }
+        
+        .stats-card .card-body {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .stats-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .article-card {
+            margin-bottom: 1.5rem;
+        }
+        
+        .article-title {
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        
+        .article-title:hover {
+            color: #1d4ed8;
+            text-decoration: underline;
+        }
+        
+        .article-meta {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin: 0.5rem 0;
+        }
+        
+        .article-stats {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+        
+        .badge-custom {
+            background-color: var(--accent-color);
+            color: white;
+            font-weight: 500;
+        }
+        
+        .month-section {
+            margin-bottom: 3rem;
+        }
+        
+        .month-header {
+            background: linear-gradient(135deg, var(--success-color), #059669);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .summary-content {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer {
+            background: var(--text-primary);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+        
+        .tech-tag {
+            display: inline-block;
+            background: var(--background-color);
+            color: var(--primary-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin: 0.25rem;
+            border: 1px solid var(--border-color);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 2rem 0;
+            }
+            
+            .stats-number {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    
+    
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <i class="fas fa-code me-2"></i>
+                lvy- 技术作品集
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/articles">所有文章</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/summaries">月度总结</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://blog.csdn.net/2301_80171004" target="_blank">
+                            <i class="fab fa-blogger me-1"></i>CSDN博客
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main>
+        
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h1 class="display-4 fw-bold mb-3">
+                    <i class="fas fa-rocket me-3"></i>
+                    欢迎来到我的技术世界
+                </h1>
+                <p class="lead mb-4">
+                    专注于人工智能、系统设计、算法优化等前沿技术领域，
+                    分享实战经验与深度思考。目前已发布 <strong>80</strong> 篇原创技术文章，
+                    累计获得 <strong>2025</strong> 次阅读。
+                </p>
+                <div class="d-flex flex-wrap gap-3">
+                    <a href="#latest-articles" class="btn btn-light btn-lg">
+                        <i class="fas fa-newspaper me-2"></i>最新文章
+                    </a>
+                    <a href="/summaries" class="btn btn-outline-light btn-lg">
+                        <i class="fas fa-chart-line me-2"></i>月度总结
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-4 text-center">
+                <div class="hero-stats">
+                    <div class="row g-3">
+                        <div class="col-6">
+                            <div class="bg-white bg-opacity-20 rounded p-3">
+                                <div class="h3 mb-1">80</div>
+                                <small>技术文章</small>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="bg-white bg-opacity-20 rounded p-3">
+                                <div class="h3 mb-1">2025</div>
+                                <small>总阅读量</small>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="bg-white bg-opacity-20 rounded p-3">
+                                <div class="h3 mb-1">0</div>
+                                <small>获得点赞</small>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="bg-white bg-opacity-20 rounded p-3">
+                                <div class="h3 mb-1">0</div>
+                                <small>活跃月份</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container">
+    <!-- 统计概览 -->
+    <section class="mb-5">
+        <h2 class="h3 mb-4">
+            <i class="fas fa-chart-bar me-2"></i>数据概览
+        </h2>
+        <div class="row g-4">
+            <div class="col-md-3">
+                <div class="card stats-card h-100">
+                    <div class="card-body">
+                        <i class="fas fa-edit fa-2x mb-3"></i>
+                        <div class="stats-number">80</div>
+                        <div>原创文章</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card stats-card h-100">
+                    <div class="card-body">
+                        <i class="fas fa-eye fa-2x mb-3"></i>
+                        <div class="stats-number">2025</div>
+                        <div>总阅读量</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card stats-card h-100">
+                    <div class="card-body">
+                        <i class="fas fa-heart fa-2x mb-3"></i>
+                        <div class="stats-number">0</div>
+                        <div>获得点赞</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card stats-card h-100">
+                    <div class="card-body">
+                        <i class="fas fa-comments fa-2x mb-3"></i>
+                        <div class="stats-number">2025</div>
+                        <div>文章评论</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 技术领域 -->
+    
+    <section class="mb-5">
+        <h2 class="h3 mb-4">
+            <i class="fas fa-tags me-2"></i>技术领域
+        </h2>
+        <div class="card">
+            <div class="card-body">
+                
+                <span class="tech-tag">AI</span>
+                
+                <span class="tech-tag">C++</span>
+                
+                <span class="tech-tag">Docker</span>
+                
+                <span class="tech-tag">AWS</span>
+                
+                <span class="tech-tag">Git</span>
+                
+                <span class="tech-tag">GitHub</span>
+                
+                <span class="tech-tag">机器学习</span>
+                
+                <span class="tech-tag">GPU</span>
+                
+                <span class="tech-tag">前端</span>
+                
+                <span class="tech-tag">ProtoBuf</span>
+                
+                <span class="tech-tag">Nginx</span>
+                
+                <span class="tech-tag">Go</span>
+                
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- 最新文章 -->
+    <section class="mb-5" id="latest-articles">
+        <h2 class="h3 mb-4">
+            <i class="fas fa-newspaper me-2"></i>最新文章
+        </h2>
+        <div class="row">
+            
+            <div class="col-lg-6 mb-4">
+                <div class="card article-card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a href="https://blog.csdn.net/2301_80171004" target="_blank" class="article-title">
+                                原创【2024 CSDN博客之星】C++自学分享
+                            </a>
+                        </h5>
+                        <div class="article-meta">
+                            <i class="fas fa-calendar-alt me-1"></i>
+                            2025-01-22 17:51:57
+                        </div>
+                        
+                        <p class="card-text text-muted">
+                            9.15 拓扑
+拓扑过桥问题抽象。
+原创
+博文更新于 1 小时前 ·
+41
+阅读 ·
+1
+点赞 ·
+0
+评论 ·
+0
+收藏...
+                        </p>
+                        
+                        <div class="article-stats">
+                            <span><i class="fas fa-eye me-1"></i>0</span>
+                            <span><i class="fas fa-heart me-1"></i>0</span>
+                            <span><i class="fas fa-comment me-1"></i>0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6 mb-4">
+                <div class="card article-card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a href="https://blog.csdn.net/2301_80171004" target="_blank" class="article-title">
+                                原创9.15 拓扑
+                            </a>
+                        </h5>
+                        <div class="article-meta">
+                            <i class="fas fa-calendar-alt me-1"></i>
+                            2025-09-15 12:05:34
+                        </div>
+                        
+                        <p class="card-text text-muted">
+                            9.15 拓扑
+拓扑过桥问题抽象。
+原创
+博文更新于 1 小时前 ·
+41
+阅读 ·
+1
+点赞 ·
+0
+评论 ·
+0
+收藏...
+                        </p>
+                        
+                        <div class="article-stats">
+                            <span><i class="fas fa-eye me-1"></i>0</span>
+                            <span><i class="fas fa-heart me-1"></i>0</span>
+                            <span><i class="fas fa-comment me-1"></i>0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6 mb-4">
+                <div class="card article-card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a href="https://blog.csdn.net/2301_80171004" target="_blank" class="article-title">
+                                原创为什么伟大不能被计划
+                            </a>
+                        </h5>
+                        <div class="article-meta">
+                            <i class="fas fa-calendar-alt me-1"></i>
+                            2025-09-15 01:30:02
+                        </div>
+                        
+                        <p class="card-text text-muted">
+                            9.15 拓扑
+拓扑过桥问题抽象。
+原创
+博文更新于 1 小时前 ·
+41
+阅读 ·
+1
+点赞 ·
+0
+评论 ·
+0
+收藏...
+                        </p>
+                        
+                        <div class="article-stats">
+                            <span><i class="fas fa-eye me-1"></i>0</span>
+                            <span><i class="fas fa-heart me-1"></i>0</span>
+                            <span><i class="fas fa-comment me-1"></i>0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6 mb-4">
+                <div class="card article-card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a href="https://blog.csdn.net/2301_80171004" target="_blank" class="article-title">
+                                原创9.14 随机化|线性基|构造|多维交点
+                            </a>
+                        </h5>
+                        <div class="article-meta">
+                            <i class="fas fa-calendar-alt me-1"></i>
+                            2025-09-14 00:27:43
+                        </div>
+                        
+                        <p class="card-text text-muted">
+                            9.15 拓扑
+拓扑过桥问题抽象。
+原创
+博文更新于 1 小时前 ·
+41
+阅读 ·
+1
+点赞 ·
+0
+评论 ·
+0
+收藏...
+                        </p>
+                        
+                        <div class="article-stats">
+                            <span><i class="fas fa-eye me-1"></i>0</span>
+                            <span><i class="fas fa-heart me-1"></i>0</span>
+                            <span><i class="fas fa-comment me-1"></i>0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6 mb-4">
+                <div class="card article-card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a href="https://blog.csdn.net/2301_80171004" target="_blank" class="article-title">
+                                原创[code-review] 日志机制 | `LOG_LEVEL`
+                            </a>
+                        </h5>
+                        <div class="article-meta">
+                            <i class="fas fa-calendar-alt me-1"></i>
+                            2025-09-13 19:22:11
+                        </div>
+                        
+                        <p class="card-text text-muted">
+                            9.15 拓扑
+拓扑过桥问题抽象。
+原创
+博文更新于 1 小时前 ·
+41
+阅读 ·
+1
+点赞 ·
+0
+评论 ·
+0
+收藏...
+                        </p>
+                        
+                        <div class="article-stats">
+                            <span><i class="fas fa-eye me-1"></i>0</span>
+                            <span><i class="fas fa-heart me-1"></i>0</span>
+                            <span><i class="fas fa-comment me-1"></i>0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6 mb-4">
+                <div class="card article-card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a href="https://blog.csdn.net/2301_80171004" target="_blank" class="article-title">
+                                原创21th cpp think
+                            </a>
+                        </h5>
+                        <div class="article-meta">
+                            <i class="fas fa-calendar-alt me-1"></i>
+                            2025-09-13 18:39:52
+                        </div>
+                        
+                        <p class="card-text text-muted">
+                            9.15 拓扑
+拓扑过桥问题抽象。
+原创
+博文更新于 1 小时前 ·
+41
+阅读 ·
+1
+点赞 ·
+0
+评论 ·
+0
+收藏...
+                        </p>
+                        
+                        <div class="article-stats">
+                            <span><i class="fas fa-eye me-1"></i>0</span>
+                            <span><i class="fas fa-heart me-1"></i>0</span>
+                            <span><i class="fas fa-comment me-1"></i>0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="text-center">
+            <a href="/articles" class="btn btn-primary btn-lg">
+                <i class="fas fa-list me-2"></i>查看所有文章
+            </a>
+        </div>
+    </section>
+
+    <!-- 热门文章 -->
+    
+    <section class="mb-5">
+        <h2 class="h3 mb-4">
+            <i class="fas fa-fire me-2"></i>热门文章
+        </h2>
+        <div class="row">
+            
+            <div class="col-lg-4 mb-4">
+                <div class="card article-card h-100">
+                    <div class="card-body">
+                        <span class="badge badge-custom mb-2">热门</span>
+                        <h6 class="card-title">
+                            <a href="https://blog.csdn.net/2301_80171004" target="_blank" class="article-title">
+                                原创TPU|DHH访谈|AI与开发
+                            </a>
+                        </h6>
+                        <div class="article-meta">
+                            2025-09-05 17:01:34
+                        </div>
+                        <div class="article-stats mt-2">
+                            <span><i class="fas fa-eye me-1"></i>2025</span>
+                            <span><i class="fas fa-heart me-1"></i>0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 mb-4">
+                <div class="card article-card h-100">
+                    <div class="card-body">
+                        <span class="badge badge-custom mb-2">热门</span>
+                        <h6 class="card-title">
+                            <a href="https://blog.csdn.net/2301_80171004" target="_blank" class="article-title">
+                                原创【2024 CSDN博客之星】C++自学分享
+                            </a>
+                        </h6>
+                        <div class="article-meta">
+                            2025-01-22 17:51:57
+                        </div>
+                        <div class="article-stats mt-2">
+                            <span><i class="fas fa-eye me-1"></i>0</span>
+                            <span><i class="fas fa-heart me-1"></i>0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 mb-4">
+                <div class="card article-card h-100">
+                    <div class="card-body">
+                        <span class="badge badge-custom mb-2">热门</span>
+                        <h6 class="card-title">
+                            <a href="https://blog.csdn.net/2301_80171004" target="_blank" class="article-title">
+                                原创9.15 拓扑
+                            </a>
+                        </h6>
+                        <div class="article-meta">
+                            2025-09-15 12:05:34
+                        </div>
+                        <div class="article-stats mt-2">
+                            <span><i class="fas fa-eye me-1"></i>0</span>
+                            <span><i class="fas fa-heart me-1"></i>0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 mb-4">
+                <div class="card article-card h-100">
+                    <div class="card-body">
+                        <span class="badge badge-custom mb-2">热门</span>
+                        <h6 class="card-title">
+                            <a href="https://blog.csdn.net/2301_80171004" target="_blank" class="article-title">
+                                原创为什么伟大不能被计划
+                            </a>
+                        </h6>
+                        <div class="article-meta">
+                            2025-09-15 01:30:02
+                        </div>
+                        <div class="article-stats mt-2">
+                            <span><i class="fas fa-eye me-1"></i>0</span>
+                            <span><i class="fas fa-heart me-1"></i>0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 mb-4">
+                <div class="card article-card h-100">
+                    <div class="card-body">
+                        <span class="badge badge-custom mb-2">热门</span>
+                        <h6 class="card-title">
+                            <a href="https://blog.csdn.net/2301_80171004" target="_blank" class="article-title">
+                                原创9.14 随机化|线性基|构造|多维交点
+                            </a>
+                        </h6>
+                        <div class="article-meta">
+                            2025-09-14 00:27:43
+                        </div>
+                        <div class="article-stats mt-2">
+                            <span><i class="fas fa-eye me-1"></i>0</span>
+                            <span><i class="fas fa-heart me-1"></i>0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 mb-4">
+                <div class="card article-card h-100">
+                    <div class="card-body">
+                        <span class="badge badge-custom mb-2">热门</span>
+                        <h6 class="card-title">
+                            <a href="https://blog.csdn.net/2301_80171004" target="_blank" class="article-title">
+                                原创[code-review] 日志机制 | `LOG_LEVEL`
+                            </a>
+                        </h6>
+                        <div class="article-meta">
+                            2025-09-13 19:22:11
+                        </div>
+                        <div class="article-stats mt-2">
+                            <span><i class="fas fa-eye me-1"></i>0</span>
+                            <span><i class="fas fa-heart me-1"></i>0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+    
+
+    <!-- 月度活跃度 -->
+    
+</div>
+
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5><i class="fas fa-user-circle me-2"></i>关于我</h5>
+                    <p class="mb-1">lvy- | 技术博客作者</p>
+                    <p class="mb-1">专注于人工智能、系统设计、算法等技术领域</p>
+                    <p class="mb-0">IP属地：湖北省 | CSDN原创文章846篇</p>
+                </div>
+                <div class="col-md-6">
+                    <h5><i class="fas fa-link me-2"></i>相关链接</h5>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="https://blog.csdn.net/2301_80171004" class="text-white text-decoration-none">
+                            <i class="fab fa-blogger me-1"></i>CSDN博客
+                        </a>
+                        <a href="https://github.com" class="text-white text-decoration-none">
+                            <i class="fab fa-github me-1"></i>GitHub
+                        </a>
+                    </div>
+                    <div class="mt-3">
+                        <small class="text-muted">
+                            本作品集由AI自动生成 | 最后更新：2025-09-15
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    
+</body>
+</html>
